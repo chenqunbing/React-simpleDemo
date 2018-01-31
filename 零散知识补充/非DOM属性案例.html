@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="react.min.js"></script>
+		<script src="react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+//			dangerouslySetInnerHTML key ref
+			var style={
+				color:"red",
+				border:"1px solid #000",
+			};
+			var Hello=React.createClass({
+				render:function(){
+					return (
+						<ul>
+							<li key='1'>Number One</li>
+							<li key='2'>Number Two</li>
+							<li key='3'>Number Three</li>
+						</ul>
+					);
+				}
+			})
+			var rawHTML={
+				__html:"<h1>I am inner HTML!</h1>"
+			};
+			ReactDOM.render(<div style={style} dangerouslySetInnerHTML={rawHTML}><Hello></Hello></div>,
+				document.getElementById("example"));
+//			ReactDOM.render(<div style={style}><Hello></Hello></div>,
+//				document.getElementById("example"));
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			document.write("hello");
+			var altwrite=document.write;
+			altwrite.bind(document)("hello");
+			
+			this.num=9;
+			var mymodule={
+				num:12,
+				getNum:function(){
+					console.log(this.num);
+				}
+			}
+			mymodule.getNum(); //12
+			var getNum1=mymodule.getNum;
+			getNum1(); //9
+		</script>
+	</body>
+</html>

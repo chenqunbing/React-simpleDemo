@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			var LikeButton=React.createClass({
+				getInitialState:function(){
+					return {
+						like:false
+					}
+				},
+				handleClick:function(event){
+					this.setState({like:!this.state.like});
+				},
+				render:function(){
+					var text=this.state.like?"like":"don't like";
+					return (
+						<p onClick={this.handleClick}>I {text} you!</p>
+					);
+				}
+			})
+			
+			ReactDOM.render(
+				<LikeButton  />,
+				document.getElementById("example")
+			);
+		</script>
+	</body>
+</html>

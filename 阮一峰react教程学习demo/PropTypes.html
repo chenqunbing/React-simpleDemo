@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			
+			var Title=React.createClass({
+				propTypes:{
+					title:React.PropTypes.string.isRequired,
+				},
+				render:function(){
+					return <h1>{this.props.title}</h1>
+				}
+			})
+			var data=123;
+			ReactDOM.render(
+				<Title title={data} />,
+				document.getElementById("example")
+			);
+		</script>
+	</body>
+</html>
+<!--这里当title为123的时候，不会报错，原因还不知道-->

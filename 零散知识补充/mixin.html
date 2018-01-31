@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			//react中加入mixin
+			var DefaultNameMixin={
+				getDefaultProps:function(){
+					return {name:"Picky"};
+				}
+			};
+			
+			var Hello=React.createClass({
+				mixins:[DefaultNameMixin],
+				render:function(){
+					return (
+						<div>Hello {this.props.name}</div>
+					);
+				}
+			});
+			ReactDOM.render(<Hello></Hello>,document.getElementById("example"));
+			
+			//重复使用
+			var OuterComponent=React.createClass({
+				render:function(){
+					return (
+						<div>
+							<ComponentOne />
+							<ComponentTwo food="chicken" />
+						</div>
+					);
+				}
+			})
+			var ComponentOne=React.createClass({
+				mixins:[DefaultNameMixin],
+				render:function(){
+					return <p>Hello {this.props.name}</p>
+				}
+			});
+			var ComponentTwo=React.createClass({
+				mixins:[DefaultNameMixin],
+				render:function(){
+					return (
+						<div>
+							<h4>{this.props.name}</h4>
+							<h5>my favorite food: {this.props.food}</h5>
+						</div>
+					);
+				}
+			});
+			ReactDOM.render(<OuterComponent></OuterComponent>,document.getElementById("example"));
+		</script>
+	</body>
+</html>

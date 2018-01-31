@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			
+//			HTML语言直接写在JS中,不加任何的引号,这就是JSX语法，它允许HTML和JS的混写
+
+			var names=['Mike',"Lili","Jhon"];
+			var Hello=React.createClass({
+				render:function(){
+					return (
+						<div>
+						{
+							names.map(function(child){
+								return <div>{child}</div>;
+							})
+						}
+						</div>
+					);
+				}
+			})
+			ReactDOM.render(<Hello></Hello>,document.getElementById("example"));
+
+
+//			JSX允许直接在js中插入变量,如果这个变量是数组,则会展开数组
+			
+			var arr=[<h1>Hello World!</h1>,<h1>Hello React!</h1>];
+			var HelloWorld=React.createClass({
+				render:function(){
+					return <div>{arr}</div>;
+				}
+			});
+			ReactDOM.render(<HelloWorld></HelloWorld>,document.getElementById("example"));
+		</script>
+	</body>
+</html>

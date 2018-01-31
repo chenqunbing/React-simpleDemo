@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			var Hello=React.createClass({
+				getInitialState:function(){
+					return {
+						opacity:1
+					};
+				},
+				componentDidMount:function(){
+					this.timer=setInterval(function(){
+						var opacity=this.state.opacity;
+						opacity=opacity-0.05;
+						if(opacity<0.1){
+							opacity=1;
+						}
+						this.setState({
+							opacity:opacity
+						})
+					}.bind(this),100);
+				},
+				render:function(){
+					return (
+						<div style={{opacity:this.state.opacity}}>Hello!</div>
+					);
+				}
+			})
+			ReactDOM.render(
+				<Hello />,
+				document.getElementById("example")
+			);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+//			属性的用法
+//			第一种用法:键值对
+			var HelloWorld=React.createClass({
+				render:function(){
+					return (
+						<div> Hello , {this.props.name}</div>
+					);
+				}
+			})
+			var Universe=React.createClass({
+				getInitialState:function(){
+					return {
+						name:''
+					};
+				},
+				handleChange:function(event){
+					this.setState({name:event.target.value});
+				},
+				render:function(){
+					return (
+						<div>
+							<HelloWorld name={this.state.name}></HelloWorld>
+							<input type="text" onChange={this.handleChange}/>
+						</div>
+					);
+				}
+			});
+			ReactDOM.render(<Universe></Universe>,document.getElementById("example"));
+			
+//			第二种:展开运算用法
+			var HelloWorld=React.createClass({
+				render:function(){
+					return (
+						<div> Hello , {this.props.name+" "+this.props.age}</div>
+					);
+				}
+			})
+			var Universe=React.createClass({
+				getInitialState:function(){
+					return {
+						name:'Mike',
+						age:12
+					};
+				},
+				handleChange:function(event){
+					this.setState({name:event.target.value});
+				},
+				render:function(){
+					return (
+						<div>
+							<HelloWorld {...this.state}></HelloWorld>
+							<input type="text" onChange={this.handleChange}/>
+						</div>
+					);
+				}
+			});
+			ReactDOM.render(<Universe></Universe>,document.getElementById("example"));
+			
+//			第三件:调用React自身的setProps函数
+//			这里,React是不推荐这么做的,组件不能改变react的属性,一般由父组件来改变
+			var Hello=React.createClass({
+				render:function(){
+					return <div>Hello , {this.props.name}</div>;
+				}
+			})
+			var instance=ReactDOM.render(<Hello></Hello>,document.getElementById("example"));
+			instance.setProps({name:"Lili"});
+			
+			
+		</script>
+	</body>
+</html>

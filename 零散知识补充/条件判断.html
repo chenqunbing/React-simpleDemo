@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			
+			var Hello=React.createClass({
+				render:function(){
+					return (
+						<div>Hello
+						{
+							this.props.name
+						}
+						</div>
+					);
+				}
+			})
+			ReactDOM.render(<Hello name="React"></Hello>,document.getElementById("example"));
+		</script>
+	</body>
+</html>
+<!--条件判断的四种写法：
+一：if语句
+二：或运算符
+三：三元表达式
+四：直接使用变量-->
+
+<!--this.props.name-->
+
+<!--this.props.name?this.props.name:"World"-->
+
+<!--this.props.name||"World"-->
+
+<!--注意：这里用if语句会出现bug，不能使用if语句-->
+<!--if(this.props.name){
+		return this.props.name;
+	}else{
+		return "World";
+	}-->							
